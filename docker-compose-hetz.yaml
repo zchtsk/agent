@@ -15,6 +15,7 @@ services:
     depends_on:
       - agents-postgres
       - agents-redis
+      - agents-qdrant
     restart: unless-stopped
     networks:
       - default
@@ -57,23 +58,6 @@ services:
     restart: unless-stopped
     networks:
       - default
-
-#  agents-doc-processor:
-#    build:
-#      context: ./doc-processor
-#      dockerfile: Dockerfile
-#    container_name: agents-doc-processor
-#    env_file:
-#      - .env
-#    volumes:
-#      - ./docs/uploads:/app/uploads
-#      - ./docs/processed:/app/processed
-#    depends_on:
-#      - agents-qdrant
-#      - agents-redis
-#    restart: unless-stopped
-#    networks:
-#      - default
 
 volumes:
   agents_n8n_data:
